@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Primer parcial de Aplicaciones Web" />
+    <title>Parcial 1 - Semantica HTML y boxmodel - Chalimond</title>
+    <link rel="stylesheet" href="./recursos/estilos/estilos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- header: es la cabecera de la página, el cual tambien es un landmark para los lectores de pantalla -->
+
+    <header>
+      <h1>Semántica HTML5 y modelo de caja CSS</h1>
+      <!-- nav: landmark "navigation". Links de ejemplo con href="#" ya que el proyecto es de una sola pagina (puesto que el enunciado dice un solo archivo HTML)
+       el uso de los ID's es solo para la navegacion y no fueron usados para el estilizado.-->
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="#semantica">Semántica</a></li>
+          <li><a href="#boxmodel">Modelo de Caja</a></li>
+          <li><a href="#herencia">Herencia</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- main: contenido principal del documento (landmark "main") -->
+    <main>
+      <!-- section: agrupación por temas del contenido -->
+      <section id="semantica">
+        <h2>1 - Estructura semántica</h2>
+        <!-- article: contenido independiente -->
+        <article>
+          <h3>¿Por qué no usar div?</h3>
+          <p>
+            Un div no comunica significado. Las etiquetas semánticas permiten
+            que lectores de pantalla y buscadores entiendan el rol de cada zona
+            de la pagina.
+          </p>
+        </article>
+      </section>
+
+      <section id="boxmodel">
+        <h2>2 - content-box vs border-box</h2>
+        <p>
+          Ambas cajas tienen width 300px, padding 20px y border 5px. Solo cambia
+          el box-sizing.
+        </p>
+        <!-- Referencia de 300px para comparar visualmente -->
+        <p class="regla">Referencia: 300px</p>
+
+        <article class="caja caja-content">
+          <h3>content-box (por defecto)</h3>
+          <p>Ancho total renderizado: 300 + 20×2 + 5×2 = 350px</p>
+        </article>
+
+        <article class="caja caja-border">
+          <h3>border-box</h3>
+          <p>
+            Ancho total renderizado: 300px (padding y border quedan adentro)
+          </p>
+        </article>
+      </section>
+      <section id="herencia">
+        <h2>3 - ¿Se hereda box-sizing?</h2>
+        <p>
+          No, box-sizing no es heredable. Por eso el reseteo usa el selector
+          universal en lugar de confiar en la herencia desde html.
+        </p>
+        <!-- Este div fuerza content-box. Sus hijos no lo heredan, siguen en border-box por el reseteo -->
+        <div class="padre-content">
+          <article class="caja caja-hijo">
+            <h3>Hijo dentro de un padre content-box</h3>
+            <p>
+              Sigue siendo border-box (300px), el valor del padre no se
+              transmitió.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <!-- footer: pie de página (landmark "contentinfo") -->
+    <footer>
+      <p>Chalimond César - Aplicaciones Web - Parcial 1</p>
+    </footer>
+  </body>
+</html>

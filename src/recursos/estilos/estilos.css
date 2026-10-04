@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  padding: 1rem;
+  background: #f4f4f4;
+  color: #222;
+}
+
+header,
+main,
+footer {
+  max-width: 700px;
+  margin: 0 auto 1rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+header {
+  background: #1d4b57;
+  color: white;
+  padding: 1rem;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: #a8dadc;
+}
+
+section {
+  margin-bottom: 1.5rem;
+}
+
+footer {
+  font-size: 0.9rem;
+  border-top: 2px solid #1d3557;
+  background: #1d4b57;
+  color: white;
+  padding: 0.2rem;
+  text-align: center;
+}
+
+/* Demostracion del boxmodel, Las tres cajas comparten las mismas dimensiones */
+
+.caja {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #1d3557;
+  margin-top: 0.5rem;
+  background: #fff;
+}
+
+/* Comportamiento por defecto: width = solo contenido.
+   Total = 300 + 20*2 + 5*2 = 350px */
+.caja-content {
+  box-sizing: content-box;
+  background: #ffd6d6;
+}
+
+/* Comportamiento alternativo: width incluye padding y border.
+   Total = 300px */
+.caja-border {
+  box-sizing: border-box;
+  background: #d6ffd6;
+}
+
+/* Barra de 300px como referencia visual para comparar */
+.regla {
+  width: 300px;
+  background: #1d4b57;
+  color: #fff;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* 
+   Test de herencia
+   El padre fuerza content-box, el hijo no declara box-sizing
+   recibe border-box del reseteo,no del padre
+  */
+.padre-content {
+  box-sizing: content-box;
+  border: 2px dashed #888;
+  padding: 10px;
+  width: 300px;
+}
+
+.caja-hijo {
+  background: #d6e4ff;
+}
